@@ -5,6 +5,7 @@ const { Pool } = require('pg')
 const app = express()
 
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
+app.use(express.static('front'))
 
 // https://gist.githubusercontent.com/meech-ward/1723b2df87eae8bb6382828fba649d64/raw/ee52637cc953df669d95bb4ab68ac2ad1a96cd9f/lotr.sql
 const pool = new Pool({
@@ -47,6 +48,34 @@ app.get("/", async (req, res) => {
   }
 })
 
+app.get("/home/newlistings", async (req, res) => {
+  try {
+    // const id = await randomId()
+    // const character = await getCharacter(id)
+    res.send('success')
+  } catch (error) {
+    res.send(error)
+  }
+})
+app.get("/home/myfeed", async (req, res) => {
+  try {
+    // const id = await randomId()
+    // const character = await getCharacter(id)
+    res.send('success')
+  } catch (error) {
+    res.send(error)
+  }
+})
+app.get("/home/shops", async (req, res) => {
+  try {
+    // const id = await randomId()
+    // const character = await getCharacter(id)
+    res.send('success')
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 app.get("/:id", async (req, res) => {
   try {
     // const id = parseInt(req.params.id) || await randomId()
@@ -55,6 +84,11 @@ app.get("/:id", async (req, res) => {
   } catch (error) {
     res.send(error)
   }
+})
+
+app.get('/s3Url', async (req, res) => {
+  const url = await generateUploadURL()
+  res.send({url})
 })
 
 const port = process.env.PORT || 8080
