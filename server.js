@@ -1,3 +1,5 @@
+import express from 'express'
+import { generateUploadURL } from './s3.js'
 const express = require('express')
 const morgan = require('morgan')
 const { Pool } = require('pg')
@@ -5,7 +7,7 @@ const { Pool } = require('pg')
 const app = express()
 
 app.use(morgan(":method :url :status :res[content-length] - :response-time ms"))
-app.use(express.static('front'))
+// app.use(express.static('front'))
 
 // https://gist.githubusercontent.com/meech-ward/1723b2df87eae8bb6382828fba649d64/raw/ee52637cc953df669d95bb4ab68ac2ad1a96cd9f/lotr.sql
 const pool = new Pool({
