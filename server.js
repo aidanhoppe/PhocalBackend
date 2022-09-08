@@ -1,8 +1,9 @@
 import express from 'express'
 import { generateUploadURL } from './s3.js'
-const express = require('express')
+import { Pool } from 'pg'
+// const express = require('express')
 const morgan = require('morgan')
-const { Pool } = require('pg')
+// const { Pool } = require('pg')
 
 const app = express()
 
